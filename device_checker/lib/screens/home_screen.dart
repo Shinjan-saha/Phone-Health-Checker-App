@@ -4,6 +4,7 @@ import 'microphone_test.dart';
 import 'camera_test.dart';
 import 'battery_test.dart';
 import 'software_details.dart';
+import 'proccessor.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -27,6 +28,11 @@ class HomeScreen extends StatelessWidget {
             title: Text('Check Battery'),
             onTap: () => Navigator.push(
                 context, MaterialPageRoute(builder: (_) => BatteryTestScreen())),
+          ),
+           ListTile(
+            title: Text('Test Proccessor'),
+            onTap: () => Navigator.push(
+                context, MaterialPageRoute(builder: (_) => ProcessorTestScreen())),
           ),
           ListTile(
             title: Text('Software Details'),
