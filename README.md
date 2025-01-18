@@ -7,11 +7,12 @@
 <li>Microphone & Speaker</li>
 <li>Camera</li>
 <li>Battery Health</li>
+<li>Storage</li>
 <li>Processor Data</li>
 <li>Software Details</li>
 </ul>
 
-<img src="./img/overview.jpeg">
+<img src="./img/overview.png">
 
 ## Uses:-
 <ul>
@@ -24,3 +25,7 @@
 ## APK:-
 
 [![App APK](https://img.shields.io/badge/App_APK-Click_Here-brightgreen)](https://drive.google.com/drive/folders/1WsmO-tx1TQ4Qx8wfJw-Macgu1iblTCzt?usp=sharing)
+
+## IPA
+
+[![IOS IPA](https://img.shields.io/badge/IOS_IPA-Click_Here-brightgreen)](https://drive.google.com/drive/folders/1WsmO-tx1TQ4Qx8wfJw-Macgu1iblTCzt?usp=sharing)
