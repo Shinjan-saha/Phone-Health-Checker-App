@@ -13,6 +13,7 @@ class _CameraTestScreenState extends State<CameraTestScreen> {
   List<CameraDescription>? _cameras;
   bool _isCameraInitialized = false;
   String? _capturedImagePath;
+  bool _isFrontCamera = false; 
 
   @override
   void initState() {
@@ -23,7 +24,12 @@ class _CameraTestScreenState extends State<CameraTestScreen> {
   Future<void> _initializeCamera() async {
     _cameras = await availableCameras();
     if (_cameras != null && _cameras!.isNotEmpty) {
-      _cameraController = CameraController(_cameras!.first, ResolutionPreset.high);
+      
+      final camera = _cameras!.firstWhere(
+        (camera) => camera.lensDirection == (_isFrontCamera ? CameraLensDirection.front : CameraLensDirection.back),
+        orElse: () => _cameras!.first,
+      );
+      _cameraController = CameraController(camera, ResolutionPreset.high);
       await _cameraController?.initialize();
       setState(() {
         _isCameraInitialized = true;
@@ -55,6 +61,15 @@ class _CameraTestScreenState extends State<CameraTestScreen> {
         ),
       );
     }
+  }
+
+  
+  void _toggleCamera() {
+    setState(() {
+      _isFrontCamera = !_isFrontCamera;
+      _isCameraInitialized = false; 
+    });
+    _initializeCamera(); 
   }
 
   @override
@@ -143,7 +158,7 @@ class _CameraTestScreenState extends State<CameraTestScreen> {
       ),
       body: Stack(
         children: [
-          // Background gradient
+         
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -157,7 +172,7 @@ class _CameraTestScreenState extends State<CameraTestScreen> {
               ),
             ),
           ),
-          // Content
+         
           SafeArea(
             child: _isCameraInitialized
                 ? Column(
@@ -184,6 +199,11 @@ class _CameraTestScreenState extends State<CameraTestScreen> {
                         icon: Icons.camera,
                       ),
                       SizedBox(height: 20),
+                      _buildGlassButton(
+                        onPressed: _toggleCamera,
+                        text: _isFrontCamera ? 'Switch to Back Camera' : 'Switch to Front Camera',
+                        icon: Icons.switch_camera,
+                      ),
                     ],
                   )
                 : Center(
@@ -222,7 +242,7 @@ class CapturedImageScreen extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          // Background gradient
+          
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -236,7 +256,7 @@ class CapturedImageScreen extends StatelessWidget {
               ),
             ),
           ),
-          // Content
+         
           SafeArea(
             child: Center(
               child: Container(

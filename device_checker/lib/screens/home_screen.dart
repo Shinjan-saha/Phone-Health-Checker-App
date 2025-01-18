@@ -87,7 +87,7 @@ class HomeScreen extends StatelessWidget {
                     context,
                     'Software Details',
                     Icons.info_outline,
-                    () => Navigator.push(context, MaterialPageRoute(builder: (_) => StorageInfoScreen())),
+                    () => Navigator.push(context, MaterialPageRoute(builder: (_) => SoftwareDetailsScreen())),
                   ),
                 ],
               ),
