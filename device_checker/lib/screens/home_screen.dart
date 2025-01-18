@@ -6,6 +6,7 @@ import 'camera_test.dart';
 import 'battery_test.dart';
 import 'software_details.dart';
 import 'proccessor.dart';
+import 'storage.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -67,6 +68,13 @@ class HomeScreen extends StatelessWidget {
                     Icons.battery_charging_full,
                     () => Navigator.push(context, MaterialPageRoute(builder: (_) => BatteryTestScreen())),
                   ),
+                   SizedBox(height: 15),
+                   _buildGlassCard(
+                    context,
+                    'Storage',
+                    Icons.dark_mode_rounded,
+                    () => Navigator.push(context, MaterialPageRoute(builder: (_) => StorageInfoScreen())),
+                  ),
                   SizedBox(height: 15),
                   _buildGlassCard(
                     context,
@@ -79,7 +87,7 @@ class HomeScreen extends StatelessWidget {
                     context,
                     'Software Details',
                     Icons.info_outline,
-                    () => Navigator.push(context, MaterialPageRoute(builder: (_) => SoftwareDetailsScreen())),
+                    () => Navigator.push(context, MaterialPageRoute(builder: (_) => StorageInfoScreen())),
                   ),
                 ],
               ),
